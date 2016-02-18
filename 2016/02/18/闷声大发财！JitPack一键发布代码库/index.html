@@ -41,7 +41,7 @@
 <link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="android," />
 
 
 
@@ -57,15 +57,32 @@
 
 
 
-<meta name="description" content="Mogican">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Bluz的博客">
-<meta property="og:url" content="http://yoursite.com/index.html">
+<meta name="description" content="0.中央代码库中央代码库是个啥？谁说对了代码都给他！中央代码库就是 build.gradle 里1compile &apos;com.android.support:appcompat-v7:23.1.0&apos;
+去寻找下载代码的地方。较新版本 Android studio 中默认使用123repositories &amp;#123;    jcenter()&amp;#125;
+也就是Bintray Jcenter中央代码库">
+<meta property="og:type" content="article">
+<meta property="og:title" content="闷声大发财！JitPack一键发布代码库">
+<meta property="og:url" content="http://yoursite.com/2016/02/18/闷声大发财！JitPack一键发布代码库/index.html">
 <meta property="og:site_name" content="Bluz的博客">
-<meta property="og:description" content="Mogican">
+<meta property="og:description" content="0.中央代码库中央代码库是个啥？谁说对了代码都给他！中央代码库就是 build.gradle 里1compile &apos;com.android.support:appcompat-v7:23.1.0&apos;
+去寻找下载代码的地方。较新版本 Android studio 中默认使用123repositories &amp;#123;    jcenter()&amp;#125;
+也就是Bintray Jcenter中央代码库">
+<meta property="og:image" content="http://7xr14l.com1.z0.glb.clouddn.com/owner_bintray.png">
+<meta property="og:image" content="http://7xr14l.com1.z0.glb.clouddn.com/gradlew_install.png">
+<meta property="og:image" content="http://7xr14l.com1.z0.glb.clouddn.com/commit_tag.png">
+<meta property="og:image" content="http://7xr14l.com1.z0.glb.clouddn.com/push_done.png">
+<meta property="og:image" content="http://7xr14l.com1.z0.glb.clouddn.com/jitpack0.png">
+<meta property="og:image" content="http://7xr14l.com1.z0.glb.clouddn.com/jitpack1.png">
+<meta property="og:image" content="http://7xr14l.com1.z0.glb.clouddn.com/jitpack2.png">
+<meta property="og:image" content="http://7xr14l.com1.z0.glb.clouddn.com/jitpack3.png">
+<meta property="og:image" content="http://7xr14l.com1.z0.glb.clouddn.com/jitpack4.png">
+<meta property="og:image" content="http://7xr14l.com1.z0.glb.clouddn.com/flow.png">
+<meta property="og:updated_time" content="2016-02-18T15:50:50.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Bluz的博客">
-<meta name="twitter:description" content="Mogican">
+<meta name="twitter:title" content="闷声大发财！JitPack一键发布代码库">
+<meta name="twitter:description" content="0.中央代码库中央代码库是个啥？谁说对了代码都给他！中央代码库就是 build.gradle 里1compile &apos;com.android.support:appcompat-v7:23.1.0&apos;
+去寻找下载代码的地方。较新版本 Android studio 中默认使用123repositories &amp;#123;    jcenter()&amp;#125;
+也就是Bintray Jcenter中央代码库">
 
 
 
@@ -83,7 +100,7 @@
   };
 </script>
 
-  <title> Bluz的博客 </title>
+  <title> 闷声大发财！JitPack一键发布代码库 | Bluz的博客 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -102,9 +119,7 @@
     
   
 
-  <div class="container one-collumn sidebar-position-left 
-   page-home 
- ">
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -183,24 +198,9 @@
         <div class="content-wrap">
           <div id="content" class="content">
             
-  <section id="posts" class="posts-expand">
 
+  <div id="posts" class="posts-expand">
     
-
-    
-    
-      
-      
-        
-        
-        
-      
-
-      
-    
-
-    
-      
 
   
   
@@ -220,10 +220,7 @@
             
             
               
-                
-                <a class="post-title-link" href="/2016/02/18/闷声大发财！JitPack一键发布代码库/" itemprop="url">
-                  闷声大发财！JitPack一键发布代码库
-                </a>
+                闷声大发财！JitPack一键发布代码库
               
             
           </h1>
@@ -268,9 +265,7 @@
       
 
       
-        
-          
-            <h2 id="0-中央代码库"><a href="#0-中央代码库" class="headerlink" title="0.中央代码库"></a>0.中央代码库</h2><p>中央代码库是个啥？谁说对了代码都给他！<br>中央代码库就是 build.gradle 里<br><figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">compile <span class="string">'com.android.support:appcompat-v7:23.1.0'</span></span><br></pre></td></tr></table></figure></p>
+        <h2 id="0-中央代码库"><a href="#0-中央代码库" class="headerlink" title="0.中央代码库"></a>0.中央代码库</h2><p>中央代码库是个啥？谁说对了代码都给他！<br>中央代码库就是 build.gradle 里<br><figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">compile <span class="string">'com.android.support:appcompat-v7:23.1.0'</span></span><br></pre></td></tr></table></figure></p>
 <p>去寻找下载代码的地方。较新版本 Android studio 中默认使用<br><figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">repositories &#123;</span><br><span class="line">    jcenter()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <p>也就是Bintray Jcenter中央代码库。</p>
 <h2 id="1-万恶的Jcenter"><a href="#1-万恶的Jcenter" class="headerlink" title="1. 万恶的Jcenter"></a>1. 万恶的Jcenter</h2><p>鄙人以前，一直用Jcenter作为repository。最近，库的owner变成了<img src="http://7xr14l.com1.z0.glb.clouddn.com/owner_bintray.png" alt=""><br>你问我资词不资词? 我说不资词。无法提交新版本，尝试提交Ownership request依然不行。</p>
@@ -302,120 +297,45 @@
 <hr>
 <p><a href="https://github.com/bluzwong/tryjitpack" target="_blank" rel="external">示例</a></p>
 <h1 id="很惭愧，只做了一些微小的工作。"><a href="#很惭愧，只做了一些微小的工作。" class="headerlink" title="很惭愧，只做了一些微小的工作。"></a>很惭愧，只做了一些微小的工作。</h1><h1 id="蟹蟹大家！"><a href="#蟹蟹大家！" class="headerlink" title="蟹蟹大家！"></a>蟹蟹大家！</h1>
-          
-        
       
     </div>
 
     <footer class="post-footer">
       
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/02/17/喜欢扬州的魔法啊/" itemprop="url">
-                  喜欢扬州的魔法啊
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-02-17T23:24:12+08:00" content="2016-02-17">
-              2016-02-17
-            </time>
-          </span>
-
+        <div class="post-tags">
           
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/02/17/喜欢扬州的魔法啊/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/02/17/喜欢扬州的魔法啊/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
+            <a href="/tags/android/" rel="tag">#android</a>
           
         </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
       
 
       
-        
-          
-            <p>Naive!</p>
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/02/17/喜欢扬州的魔法啊/" rel="next" title="喜欢扬州的魔法啊">
+                <i class="fa fa-chevron-left"></i> 喜欢扬州的魔法啊
+              </a>
+            
+          </div>
 
-          
-        
-      
-    </div>
-
-    <footer class="post-footer">
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
       
 
       
-
-      
-      
-        <div class="post-eof"></div>
       
     </footer>
   </article>
 
 
-    
 
-  </section>
-
-  
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -423,6 +343,14 @@
 
 
           
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/02/18/闷声大发财！JitPack一键发布代码库/"
+           data-title="闷声大发财！JitPack一键发布代码库" data-url="http://yoursite.com/2016/02/18/闷声大发财！JitPack一键发布代码库/">
+      </div>
+    
+  </div>
+
 
         </div>
         
@@ -442,8 +370,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel  sidebar-panel-active ">
+      <section class="site-overview sidebar-panel ">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/default_avatar.png"
@@ -497,6 +434,23 @@
 
       </section>
 
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator">
+            <i class="fa fa-angle-double-up"></i>
+          </div>
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#0-中央代码库"><span class="nav-number">1.</span> <span class="nav-text">0.中央代码库</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-万恶的Jcenter"><span class="nav-number">2.</span> <span class="nav-text">1. 万恶的Jcenter</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-JitPack介绍"><span class="nav-number">3.</span> <span class="nav-text">2. JitPack介绍</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-发布纯Java-jar到JitPack"><span class="nav-number">4.</span> <span class="nav-text">3. 发布纯Java jar到JitPack</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1-首先准备好自己要发布的Java模块"><span class="nav-number">4.1.</span> <span class="nav-text">3.1 首先准备好自己要发布的Java模块</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2-在命令行"><span class="nav-number">4.2.</span> <span class="nav-text">3.2 在命令行</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-3-本地就OK了"><span class="nav-number">4.3.</span> <span class="nav-text">3.3 本地就OK了</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-4-发布"><span class="nav-number">4.4.</span> <span class="nav-text">3.4 发布</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-发布aar到JitPack"><span class="nav-number">5.</span> <span class="nav-text">4. 发布aar到JitPack</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#4-1-aar"><span class="nav-number">5.1.</span> <span class="nav-text">4.1 aar</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-2-修改build-gradle"><span class="nav-number">5.2.</span> <span class="nav-text">4.2 修改build.gradle</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-3-在命令行敲"><span class="nav-number">5.3.</span> <span class="nav-text">4.3 在命令行敲</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-4-发布"><span class="nav-number">5.4.</span> <span class="nav-text">4.4 发布</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-5-使用"><span class="nav-number">5.5.</span> <span class="nav-text">4.5 使用</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-总结"><span class="nav-number">6.</span> <span class="nav-text">5. 总结</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#很惭愧，只做了一些微小的工作。"><span class="nav-number"></span> <span class="nav-text">很惭愧，只做了一些微小的工作。</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#蟹蟹大家！"><span class="nav-number"></span> <span class="nav-text">蟹蟹大家！</span></a></div>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator">
+            <i class="fa fa-angle-double-down"></i>
+          </div>
+        </section>
       
 
     </div>
@@ -571,6 +525,167 @@
   
 
   
+  
+<script type="text/javascript" src="/js/src/scrollspy.js?v=0.5.0"></script>
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.motion.complete', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      var $indicator = $(indicator);
+      var opacity = action === 'show' ? 1 : 0;
+      $indicator.velocity ?
+        $indicator.velocity('stop').velocity({
+          opacity: opacity
+        }, { duration: 100 }) :
+        $indicator.stop().animate({
+          opacity: opacity
+        }, 100);
+    }
+
+  });
+</script>
+
+<script type="text/javascript" id="sidebar.nav">
+  $(document).ready(function () {
+    var html = $('html');
+    var TAB_ANIMATE_DURATION = 200;
+    var hasVelocity = $.isFunction(html.velocity);
+
+    $('.sidebar-nav li').on('click', function () {
+      var item = $(this);
+      var activeTabClassName = 'sidebar-nav-active';
+      var activePanelClassName = 'sidebar-panel-active';
+      if (item.hasClass(activeTabClassName)) {
+        return;
+      }
+
+      var currentTarget = $('.' + activePanelClassName);
+      var target = $('.' + item.data('target'));
+
+      hasVelocity ?
+        currentTarget.velocity('transition.slideUpOut', TAB_ANIMATE_DURATION, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', TAB_ANIMATE_DURATION)
+            .addClass(activePanelClassName);
+        }) :
+        currentTarget.animate({ opacity: 0 }, TAB_ANIMATE_DURATION, function () {
+          currentTarget.hide();
+          target
+            .stop()
+            .css({'opacity': 0, 'display': 'block'})
+            .animate({ opacity: 1 }, TAB_ANIMATE_DURATION, function () {
+              currentTarget.removeClass(activePanelClassName);
+              target.addClass(activePanelClassName);
+            });
+        });
+
+      item.siblings().removeClass(activeTabClassName);
+      item.addClass(activeTabClassName);
+    });
+
+    $('.post-toc a').on('click', function (e) {
+      e.preventDefault();
+      var targetSelector = NexT.utils.escapeSelector(this.getAttribute('href'));
+      var offset = $(targetSelector).offset().top;
+      hasVelocity ?
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        }) :
+        $('html, body').stop().animate({
+          scrollTop: offset
+        }, 500);
+    });
+
+    // Expand sidebar on post detail page by default, when post has a toc.
+    NexT.motion.middleWares.sidebar = function () {
+      var $tocContent = $('.post-toc-content');
+
+      if (CONFIG.sidebar === 'post') {
+        if ($tocContent.length > 0 && $tocContent.html().trim().length > 0) {
+          NexT.utils.displaySidebar();
+        }
+      }
+    };
+  });
+</script>
+
+
 
   
 
