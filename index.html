@@ -5,7 +5,7 @@
   
 
 
-<html class="theme-next muse use-motion">
+<html class="theme-next mist use-motion">
 <head>
   <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
@@ -72,7 +72,7 @@
 <script type="text/javascript" id="hexo.configuration">
   var NexT = window.NexT || {};
   var CONFIG = {
-    scheme: 'Muse',
+    scheme: 'Mist',
     sidebar: {"position":"left","display":"post"},
     fancybox: true,
     motion: true,
@@ -142,6 +142,16 @@
               <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
             
             首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-user fa-fw"></i> <br />
+            
+            关于
           </a>
         </li>
       
@@ -270,21 +280,403 @@
       
         
           
-            <h2 id="在-Activity-中的情况"><a href="#在-Activity-中的情况" class="headerlink" title="在 Activity 中的情况"></a>在 Activity 中的情况</h2><h3 id="1-使用-retained-Fragment"><a href="#1-使用-retained-Fragment" class="headerlink" title="1. 使用 retained Fragment"></a>1. 使用 retained Fragment</h3><p>大牛鸿洋在<a href="http://blog.csdn.net/lmj623565791/article/details/37936275" target="_blank" rel="external">博文</a>中提及一种方法 <code>如果是大量数据，使用Fragment保持需要恢复的对象</code>, 用法大概是  </p>
-<p>用于维持状态的 Fragment<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ByFragment</span> <span class="keyword">extends</span> <span class="title">Fragment</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="annotation">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(Bundle savedInstanceState)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>.onCreate(savedInstanceState);</span><br><span class="line">        <span class="comment">// 设置 维持实例</span></span><br><span class="line">        setRetainInstance(<span class="keyword">true</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 需要维持状态的数据</span></span><br><span class="line">    <span class="keyword">int</span> count = <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>需要维持状态的 Activity:<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ByFragmentActivity</span> <span class="keyword">extends</span> <span class="title">Activity</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    SwipeRefreshLayout refreshLayout;</span><br><span class="line">    TextView textView;</span><br><span class="line">    ByFragment fragment;</span><br><span class="line">    <span class="keyword">int</span> count = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">    <span class="annotation">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(Bundle savedInstanceState)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>.onCreate(savedInstanceState);</span><br><span class="line">        setContentView(R.layout.activity_state);</span><br><span class="line"></span><br><span class="line">        refreshLayout = (SwipeRefreshLayout) findViewById(R.id.refresh);</span><br><span class="line">        textView = (TextView) findViewById(R.id.tv);</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// 获取 activity 的 FragmentManager 中用于维持状态数据的 Fragment</span></span><br><span class="line">        fragment = (ByFragment) getFragmentManager().findFragmentByTag(<span class="string">"ByFragment"</span>);</span><br><span class="line">        <span class="keyword">if</span> (fragment == <span class="keyword">null</span>) &#123;</span><br><span class="line">            fragment = <span class="keyword">new</span> ByFragment();</span><br><span class="line">            getFragmentManager().beginTransaction().add(fragment, <span class="string">"ByFragment"</span>).commit();</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            count = fragment.count;</span><br><span class="line">        &#125;</span><br><span class="line">        refreshTv();</span><br><span class="line"></span><br><span class="line">        refreshLayout.setOnRefreshListener(<span class="keyword">new</span> SwipeRefreshLayout.OnRefreshListener() &#123;</span><br><span class="line">            <span class="annotation">@Override</span></span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onRefresh</span><span class="params">()</span> </span>&#123;</span><br><span class="line">                refreshLayout.postDelayed(<span class="keyword">new</span> Runnable() &#123;</span><br><span class="line">                    <span class="annotation">@Override</span></span><br><span class="line">                    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">                        count++;</span><br><span class="line">                        fragment.count = count;</span><br><span class="line">                        refreshTv();</span><br><span class="line">                        refreshLayout.setRefreshing(<span class="keyword">false</span>);</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;, <span class="number">1000</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="annotation">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onSaveInstanceState</span><span class="params">(Bundle outState)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>.onSaveInstanceState(outState);</span><br><span class="line">        fragment.count = count;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>打开 <code>开发者选项</code> 中的 <code>不保留活动</code> 以方便测试<br><img src="http://7xr14l.com1.z0.glb.clouddn.com/activitynotkeep.jpg" alt="pic1"></p>
-<p>进入到 Activity 中，count 是需要维持状态的数据<br><img src="http://7xr14l.com1.z0.glb.clouddn.com/count1.jpg" alt="pic2"></p>
-<p>旋转屏幕<br><img src="http://7xr14l.com1.z0.glb.clouddn.com/count1_2.jpg" alt="pic3"><br>数据成功维持。</p>
-<p>按 Home 键，置于后台，然后再返回 Activity<br><img src="http://7xr14l.com1.z0.glb.clouddn.com/count0.jpg" alt="pic4"><br>数据消失了。</p>
-<h3 id="2-使用-savedInstanceState-Bundle"><a href="#2-使用-savedInstanceState-Bundle" class="headerlink" title="2. 使用 savedInstanceState: Bundle"></a>2. 使用 savedInstanceState: Bundle</h3><p>这种方式比较基础，用法就不再多述<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ByBundleActivity</span> <span class="keyword">extends</span> <span class="title">Activity</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    SwipeRefreshLayout refreshLayout;</span><br><span class="line">    TextView textView;</span><br><span class="line">    <span class="keyword">int</span> count = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">    <span class="annotation">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(Bundle savedInstanceState)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>.onCreate(savedInstanceState);</span><br><span class="line">        setContentView(R.layout.activity_state);</span><br><span class="line"></span><br><span class="line">        refreshLayout = (SwipeRefreshLayout) findViewById(R.id.refresh);</span><br><span class="line">        textView = (TextView) findViewById(R.id.tv);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (savedInstanceState != <span class="keyword">null</span>) &#123;</span><br><span class="line">            count = savedInstanceState.getInt(<span class="string">"KEY_COUNT"</span>, <span class="number">0</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        refreshTv();</span><br><span class="line"></span><br><span class="line">        refreshLayout.setOnRefreshListener(<span class="keyword">new</span> SwipeRefreshLayout.OnRefreshListener() &#123;</span><br><span class="line">            <span class="annotation">@Override</span></span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onRefresh</span><span class="params">()</span> </span>&#123;</span><br><span class="line">                refreshLayout.postDelayed(<span class="keyword">new</span> Runnable() &#123;</span><br><span class="line">                    <span class="annotation">@Override</span></span><br><span class="line">                    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">                        count++;</span><br><span class="line">                        refreshTv();</span><br><span class="line">                        refreshLayout.setRefreshing(<span class="keyword">false</span>);</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;, <span class="number">1000</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="annotation">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onSaveInstanceState</span><span class="params">(Bundle outState)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>.onSaveInstanceState(outState);</span><br><span class="line">        outState.putInt(<span class="string">"KEY_COUNT"</span>, count);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>进入 Activity 获取数据。<br>旋转屏幕，数据还在。<br>按 Home，再回来，数据还在。</p>
-<h3 id="3-小结"><a href="#3-小结" class="headerlink" title="3. 小结"></a>3. 小结</h3><p>第一种方式使用 retained Fragment，当配置发生变化时（屏幕旋转就是情况之一），其实例在内存中没有被销毁。优点是能够在 Fragment 中完整维持数据，并且不需要实现任何一种序列化的方式。缺点呢，也很明显，当长时间在后台时，难免 Activity 和 其 Fragment 会被系统所回收（开启不保留活动模拟），所以维持的数据也当然没有了。</p>
-<p>第二种方式使用 Bundle。优点是就算被系统回收了，保存的状态也能在下一次启动时 <code>onCreate(Bundle savedInstanceState)</code>  Bundle 中获取。缺点是，这些数据都要进行序列化、反序列化，一些复杂对象可能会出现问题，特别是如网络请求等较长时间的任务，是比较难保存的。</p>
-<p>综上，数据尽量使用第二种 Bundle 来维持。长时间执行的任务，通过第一种 retained Fragment 来维持，旋转屏幕时，长时间的任务也没有被销毁，破费！</p>
-<p><a href="https://github.com/bluzwong/MonkeyKingBar/tree/1b1f8714bdfbe0d62838740eb7ecc186913f3fa4/app/src/main/java/com/github/bluzwong/monkeykingbar/example" target="_blank" rel="external">本文demo</a></p>
-<h1 id="很惭愧-只做了一些微小的工作"><a href="#很惭愧-只做了一些微小的工作" class="headerlink" title="很惭愧 只做了一些微小的工作"></a>很惭愧 只做了一些微小的工作</h1><h1 id="蟹蟹大家"><a href="#蟹蟹大家" class="headerlink" title="蟹蟹大家"></a>蟹蟹大家</h1>
+          在 Activity 中的情况1. 使用 retained Fragment大牛鸿洋在博文中提及一种方法 如果是大量数据，使用Fragment保持需要恢复的对象, 用法大概是  
+用于维持状态的 Fragment12345678910111213public class ByFragment ext
+          ...
+
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/03/06/Android中-一些维持状态的经验/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/02/25/令人激动的-Rxjava/" itemprop="url">
+                  令人激动的 Rxjava
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-02-25T00:31:51+08:00" content="2016-02-25">
+              2016-02-25
+            </time>
+          </span>
+
           
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/02/25/令人激动的-Rxjava/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/02/25/令人激动的-Rxjava/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+          你觉得用 Rxjava 好不好啊？- 吼啊！当然啦！  
+前言Rxjava 到底有什么用呢？一句话的定义:Reactive Extensions for the JVM – a library for composing asynchronous and event-based programs u
+          ...
+
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/02/25/令人激动的-Rxjava/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/02/22/使用Kotlin遇到的一些问题/" itemprop="url">
+                  使用Kotlin遇到的一些问题
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-02-22T22:57:16+08:00" content="2016-02-22">
+              2016-02-22
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/02/22/使用Kotlin遇到的一些问题/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/02/22/使用Kotlin遇到的一些问题/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+          前言Kotlin 正式版已经发布了，优点大致就是解决了Java的一些痛点，写起来很Exciting。我来说说用Kotlin遇到的问题。  
+Apt(Annotation processing tool) 并不总是起效Apt 现在可谓是不可缺少的一个工具，有非常多的库钦定了Apt。有人问，“不是说用注
+          ...
+
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/02/22/使用Kotlin遇到的一些问题/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/02/18/闷声大发财！JitPack一键发布代码库/" itemprop="url">
+                  闷声大发财！JitPack一键发布代码库
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-02-18T23:24:58+08:00" content="2016-02-18">
+              2016-02-18
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/02/18/闷声大发财！JitPack一键发布代码库/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/02/18/闷声大发财！JitPack一键发布代码库/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+          0.中央代码库中央代码库是个啥？谁说对了代码都给他！中央代码库就是 build.gradle 里1compile 'com.android.support:appcompat-v7:23.1.0'
+去寻找下载代码的地方。较新版本 Android studio 中默认使用123repositories
+          ...
+
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/02/18/闷声大发财！JitPack一键发布代码库/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/02/17/喜欢扬州的魔法啊/" itemprop="url">
+                  喜欢扬州的魔法啊
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-02-17T23:24:12+08:00" content="2016-02-17">
+              2016-02-17
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/02/17/喜欢扬州的魔法啊/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/02/17/喜欢扬州的魔法啊/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+          Naive!
+
+          
+
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/02/17/喜欢扬州的魔法啊/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
         
       
     </div>
@@ -417,7 +809,7 @@
 <div class="theme-info">
   主题 -
   <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
-    NexT.Muse
+    NexT.Mist
   </a>
 </div>
 
